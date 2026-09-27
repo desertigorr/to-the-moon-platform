@@ -1,20 +1,34 @@
 export function MoonMark() {
   return (
     <svg
-      viewBox="0 0 32 32"
-      width="30"
-      height="30"
+      viewBox="0 0 48 48"
+      width="34"
+      height="34"
       fill="none"
       aria-hidden="true"
     >
       <path
-        d="M22.5 22.4A10 10 0 0 1 9.6 9.5 10 10 0 1 0 22.5 22.4Z"
+        d="M32 36A17 17 0 0 1 13 9a17 17 0 1 0 19 27Z"
         fill="currentColor"
       />
+      <g
+        fill="currentColor"
+        stroke="var(--accent)"
+        strokeWidth="0.6"
+        strokeLinejoin="round"
+      >
+        <path d="m30 25-3-7 1-1-2-3 2-1-1-3 3-7 3 7-1 3 2 1-2 3 1 1Z" />
+        <path d="m29 25-7-4 1-2-3-1 1-2-3-6 6 3v2l3 1-1 2 2 1Z" />
+        <path d="m31 25 7-4-1-2 3-1-1-2 3-6-6 3v2l-3 1 1 2-2 1Z" />
+        <path d="m29 25-8 1-1-2-3 1-6-6 8 1 1 2 3-1Z" />
+        <path d="m31 25 8 1 1-2 3 1 4-6-6 1-1 2-3-1Z" />
+        <path d="m29 25-3 5-7 2 3-5 3-1Z" />
+        <path d="m31 25 3 5 7 2-3-5-3-1Z" />
+      </g>
       <path
-        d="M7 25 25 7m-7 0h7v7"
+        d="M30 24v10"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth="1.8"
         strokeLinecap="round"
         strokeLinejoin="round"
       />

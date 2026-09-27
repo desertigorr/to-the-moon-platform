@@ -48,10 +48,10 @@ def package():
     if len(set(actual)) != len(actual) or set(actual) != expected or not all(math.isfinite(float(row['prediction'])) for row in rows):
         raise ValueError('Submission IDs or predictions are invalid')
     files = sorted([*selected_files(), target])
-    required = [ROOT/'assets/geometry.json', ROOT/'docs/code/index.html', ROOT/'docs/JURY.md',
+    required = [ROOT/'assets/geometry.json', ROOT/'docs/code/index.html', ROOT/'docs/README.md',
                 ROOT/'ml_assets/catboost/ml_module/model.cbm', ROOT/'ml_assets/catboost_classificator/risk_module/risk_model.cbm']
     if not all(path in files for path in required):
-        raise ValueError('Missing runtime or jury artifact')
+        raise ValueError('Missing runtime or documentation artifact')
     manifest = {'prepared_at': datetime.now(timezone.utc).isoformat(), 'submission_rows': len(rows),
         'submission_sha256': hashlib.sha256(target.read_bytes()).hexdigest(),
         'external_inputs': ['dataset/ndtp-telemetry-emulator.tar', 'dataset/validate/traffic.csv', 'dataset/validate/schedule_plan.csv'],

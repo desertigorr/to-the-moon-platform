@@ -59,4 +59,4 @@ docker compose run --rm --no-deps -v "${PWD}:/app" -w /app ml python -m scripts.
 docker compose run --rm --no-deps -v "${PWD}:/app" -w /app ml python -m scripts.build_docs
 ```
 
-Первая команда дополнительно требует train/traffic.csv и validate/schedule_plan.csv. Генерация геометрии и обучение не выполняются при обычном старте жюри. Для дообучения предоставлены transit_catboost.py и risk_model.py вместе с конфигурациями и метаданными; новые веса должны сохранять входной контракт и версии признаков.
+Первая команда дополнительно требует train/traffic.csv и validate/schedule_plan.csv. Генерация геометрии и обучение не выполняются при обычном запуске. Для дообучения предоставлены transit_catboost.py и risk_model.py вместе с конфигурациями и метаданными; новые веса должны сохранять входной контракт и версии признаков.
