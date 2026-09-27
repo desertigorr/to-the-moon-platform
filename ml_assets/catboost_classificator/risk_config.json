@@ -1,0 +1,35 @@
+{
+  "delay_threshold_s": 120.0,
+  "seed": 42,
+  "depths": [
+    4,
+    6
+  ],
+  "synthetic_weights": [
+    0.0,
+    0.2,
+    1.0
+  ],
+  "folds": 3,
+  "holdout_fraction": 0.25,
+  "max_iterations": 800,
+  "early_stopping_rounds": 80,
+  "learning_rate": 0.05,
+  "l2_leaf_reg": 10.0,
+  "task_type": "CPU",
+  "thread_count": 4,
+  "min_alert_precision": 0.5,
+  "features": {
+    "windows_s": [
+      60,
+      180,
+      300,
+      600
+    ],
+    "max_speed_kmh": 130.0,
+    "max_hold_s": 30.0,
+    "stale_after_s": 120.0,
+    "stop_speed_kmh": 1.0,
+    "respect_receive_time": false
+  }
+}

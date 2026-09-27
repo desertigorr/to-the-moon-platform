@@ -1,0 +1,101 @@
+{
+  "best": {
+    "depth": 4,
+    "synthetic_weight": 1.0,
+    "cv_ap_all": 0.5710066338259938,
+    "cv_ap_not_yet_late": 0.21035564357075504,
+    "selection_score": 0.3906811386983744,
+    "iterations": 106,
+    "fold_iterations": [
+      55,
+      477,
+      106
+    ]
+  },
+  "group_holdout": {
+    "n": 375,
+    "positive": 73,
+    "prevalence": 0.19466666666666665,
+    "average_precision": 0.5732989237787564,
+    "brier": 0.12232063190801955,
+    "log_loss": 0.39519686832133616,
+    "threshold": 0.12758665076511547,
+    "all": {
+      "n": 375,
+      "positive": 73,
+      "ap": 0.5732989237787564,
+      "alerts": 206,
+      "tp": 64,
+      "fp": 142,
+      "fn": 9,
+      "precision": 0.3106796116504854,
+      "recall": 0.8767123287671232
+    },
+    "not_yet_late": {
+      "n": 287,
+      "positive": 33,
+      "ap": 0.2189413450326792,
+      "alerts": 119,
+      "tp": 24,
+      "fp": 95,
+      "fn": 9,
+      "precision": 0.20168067226890757,
+      "recall": 0.7272727272727273
+    }
+  },
+  "official_test": {
+    "n": 353,
+    "positive": 86,
+    "prevalence": 0.24362606232294617,
+    "average_precision": 0.7813588685972963,
+    "brier": 0.10685916026636318,
+    "log_loss": 0.3444343017985235,
+    "threshold": 0.16395904162147615,
+    "all": {
+      "n": 353,
+      "positive": 86,
+      "ap": 0.7813588685972963,
+      "alerts": 190,
+      "tp": 83,
+      "fp": 107,
+      "fn": 3,
+      "precision": 0.4368421052631579,
+      "recall": 0.9651162790697675
+    },
+    "not_yet_late": {
+      "n": 259,
+      "positive": 42,
+      "ap": 0.6297035914864568,
+      "alerts": 103,
+      "tp": 39,
+      "fp": 64,
+      "fn": 3,
+      "precision": 0.3786407766990291,
+      "recall": 0.9285714285714286
+    }
+  },
+  "dev_alert_threshold": {
+    "probability": 0.12758665076511547,
+    "oof_eligible_precision": 0.19047619047619047,
+    "oof_eligible_recall": 0.6933333333333334,
+    "min_precision_requested": 0.5,
+    "selection_rule": "fallback_max_f1_no_threshold_met_min_precision"
+  },
+  "final_alert_threshold": {
+    "probability": 0.16395904162147615,
+    "oof_eligible_precision": 0.2248062015503876,
+    "oof_eligible_recall": 0.5370370370370371,
+    "min_precision_requested": 0.5,
+    "selection_rule": "fallback_max_f1_no_threshold_met_min_precision"
+  },
+  "rows_train": 4434,
+  "feature_count": 74,
+  "elapsed_seconds": 45.51285851200004,
+  "limitations": [
+    "Probability means > threshold at a known future stop, not first disruption onset.",
+    "Calibration and alert threshold use group out-of-fold REAL points only.",
+    "Selection uses only development families; holdout is evaluated before refit.",
+    "Test labels never tune the model; test shares vehicles/day with train.",
+    "No generalization estimate beyond the single available day."
+  ]
+}

@@ -1,0 +1,666 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "To the Moon ML",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/predict": {
+      "post": {
+        "summary": "Predict",
+        "operationId": "predict_predict_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PredictRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PredictResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ForecastPoint": {
+        "properties": {
+          "sample_id": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Sample Id"
+          },
+          "tr_id": {
+            "type": "integer",
+            "title": "Tr Id"
+          },
+          "T": {
+            "type": "string",
+            "format": "date-time",
+            "title": "T"
+          },
+          "cur_dev_s": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cur Dev S"
+          },
+          "target_stop_id": {
+            "type": "string",
+            "title": "Target Stop Id"
+          },
+          "target_time_begin": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Target Time Begin"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "sample_id",
+          "tr_id",
+          "T",
+          "cur_dev_s",
+          "target_stop_id",
+          "target_time_begin"
+        ],
+        "title": "ForecastPoint"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "PlanPoint": {
+        "properties": {
+          "tt_action_item_id": {
+            "type": "string",
+            "title": "Tt Action Item Id"
+          },
+          "tr_id": {
+            "type": "integer",
+            "title": "Tr Id"
+          },
+          "time_begin": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Time Begin"
+          },
+          "geom": {
+            "type": "string",
+            "title": "Geom"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "tt_action_item_id",
+          "tr_id",
+          "time_begin",
+          "geom"
+        ],
+        "title": "PlanPoint"
+      },
+      "PredictRequest": {
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "title": "Request Id"
+          },
+          "points": {
+            "items": {
+              "$ref": "#/components/schemas/ForecastPoint"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "minItems": 1,
+            "title": "Points"
+          },
+          "traffic_buffer": {
+            "items": {
+              "$ref": "#/components/schemas/TrafficPoint"
+            },
+            "type": "array",
+            "maxItems": 200000,
+            "title": "Traffic Buffer"
+          },
+          "schedule_as_of_T": {
+            "items": {
+              "$ref": "#/components/schemas/PlanPoint"
+            },
+            "type": "array",
+            "maxItems": 20000,
+            "minItems": 1,
+            "title": "Schedule As Of T"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "request_id",
+          "points",
+          "traffic_buffer",
+          "schedule_as_of_T"
+        ],
+        "title": "PredictRequest"
+      },
+      "PredictResponse": {
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "title": "Request Id"
+          },
+          "predictions": {
+            "items": {
+              "$ref": "#/components/schemas/Prediction"
+            },
+            "type": "array",
+            "title": "Predictions"
+          },
+          "elapsed_ms": {
+            "type": "number",
+            "title": "Elapsed Ms"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "request_id",
+          "predictions",
+          "elapsed_ms"
+        ],
+        "title": "PredictResponse"
+      },
+      "Prediction": {
+        "properties": {
+          "sample_id": {
+            "type": "string",
+            "title": "Sample Id"
+          },
+          "tr_id": {
+            "type": "integer",
+            "title": "Tr Id"
+          },
+          "T": {
+            "type": "string",
+            "format": "date-time",
+            "title": "T"
+          },
+          "target_stop_id": {
+            "type": "string",
+            "title": "Target Stop Id"
+          },
+          "target_time_begin": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Target Time Begin"
+          },
+          "predicted_delay_s": {
+            "type": "number",
+            "title": "Predicted Delay S"
+          },
+          "late_probability": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Late Probability"
+          },
+          "risk_alert": {
+            "type": "boolean",
+            "title": "Risk Alert"
+          },
+          "early_risk_alert": {
+            "type": "boolean",
+            "title": "Early Risk Alert"
+          },
+          "telemetry_stale": {
+            "type": "boolean",
+            "title": "Telemetry Stale"
+          },
+          "cur_dev_s": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cur Dev S"
+          },
+          "delay_threshold_s": {
+            "type": "number",
+            "title": "Delay Threshold S"
+          },
+          "alert_threshold": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Alert Threshold"
+          },
+          "generated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Generated At"
+          },
+          "model_version": {
+            "type": "string",
+            "title": "Model Version"
+          },
+          "explanations": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Explanations"
+          },
+          "factors": {
+            "items": {
+              "$ref": "#/components/schemas/PredictionFactor"
+            },
+            "type": "array",
+            "title": "Factors"
+          },
+          "observations": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Observations"
+          },
+          "explanation_method": {
+            "type": "string",
+            "title": "Explanation Method",
+            "default": "unavailable"
+          },
+          "risk_baseline_log_odds": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Risk Baseline Log Odds"
+          },
+          "risk_other_contribution": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Risk Other Contribution"
+          },
+          "segment": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SegmentContext"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "recommendations": {
+            "items": {
+              "$ref": "#/components/schemas/Recommendation"
+            },
+            "type": "array",
+            "title": "Recommendations"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "sample_id",
+          "tr_id",
+          "T",
+          "target_stop_id",
+          "target_time_begin",
+          "predicted_delay_s",
+          "late_probability",
+          "risk_alert",
+          "early_risk_alert",
+          "telemetry_stale",
+          "cur_dev_s",
+          "delay_threshold_s",
+          "alert_threshold",
+          "generated_at",
+          "model_version"
+        ],
+        "title": "Prediction"
+      },
+      "PredictionFactor": {
+        "properties": {
+          "feature": {
+            "type": "string",
+            "title": "Feature"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          },
+          "unit": {
+            "type": "string",
+            "title": "Unit"
+          },
+          "contribution": {
+            "type": "number",
+            "title": "Contribution"
+          },
+          "direction": {
+            "type": "string",
+            "enum": [
+              "increases_risk",
+              "decreases_risk"
+            ],
+            "title": "Direction"
+          },
+          "method": {
+            "type": "string",
+            "const": "tree_shap",
+            "title": "Method",
+            "default": "tree_shap"
+          },
+          "scale": {
+            "type": "string",
+            "const": "calibrated_log_odds",
+            "title": "Scale",
+            "default": "calibrated_log_odds"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "feature",
+          "label",
+          "value",
+          "unit",
+          "contribution",
+          "direction"
+        ],
+        "title": "PredictionFactor"
+      },
+      "Recommendation": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "rationale": {
+            "type": "string",
+            "title": "Rationale"
+          },
+          "priority": {
+            "type": "string",
+            "enum": [
+              "high",
+              "medium",
+              "low"
+            ],
+            "title": "Priority"
+          },
+          "requires_dispatcher": {
+            "type": "boolean",
+            "title": "Requires Dispatcher",
+            "default": true
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "code",
+          "title",
+          "rationale",
+          "priority"
+        ],
+        "title": "Recommendation"
+      },
+      "SegmentContext": {
+        "properties": {
+          "segment_id": {
+            "type": "string",
+            "title": "Segment Id"
+          },
+          "graph_version": {
+            "type": "string",
+            "title": "Graph Version"
+          },
+          "from_stop_id": {
+            "type": "string",
+            "title": "From Stop Id"
+          },
+          "to_stop_id": {
+            "type": "string",
+            "title": "To Stop Id"
+          },
+          "from_name": {
+            "type": "string",
+            "title": "From Name"
+          },
+          "to_name": {
+            "type": "string",
+            "title": "To Name"
+          },
+          "basis": {
+            "type": "string",
+            "const": "target_approach",
+            "title": "Basis",
+            "default": "target_approach"
+          },
+          "geometry_source": {
+            "type": "string",
+            "title": "Geometry Source"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "segment_id",
+          "graph_version",
+          "from_stop_id",
+          "to_stop_id",
+          "from_name",
+          "to_name",
+          "geometry_source"
+        ],
+        "title": "SegmentContext"
+      },
+      "TrafficPoint": {
+        "properties": {
+          "tr_id": {
+            "type": "integer",
+            "title": "Tr Id"
+          },
+          "event_time": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Event Time"
+          },
+          "receive_time": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Receive Time"
+          },
+          "location_valid": {
+            "type": "boolean",
+            "title": "Location Valid"
+          },
+          "lat": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 90.0,
+                "minimum": -90.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lat"
+          },
+          "lon": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 180.0,
+                "minimum": -180.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lon"
+          },
+          "speed": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Speed"
+          },
+          "heading": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Heading"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "tr_id",
+          "event_time",
+          "receive_time",
+          "location_valid",
+          "lat",
+          "lon",
+          "speed",
+          "heading"
+        ],
+        "title": "TrafficPoint"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

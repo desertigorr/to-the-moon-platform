@@ -1,0 +1,40 @@
+{
+  "selected": {
+    "mode": "residual",
+    "depth": 4,
+    "synthetic_weight": 1.0,
+    "cv_mae_s": 74.94798205675396,
+    "iterations": 183,
+    "fold_mae_s": [
+      89.92363693349083,
+      60.59051013714614,
+      74.20944676611865
+    ],
+    "fold_iterations": [
+      183,
+      65,
+      646
+    ]
+  },
+  "group_holdout": {
+    "n": 375,
+    "zero_mae_s": 85.97066666666667,
+    "cur_dev_mae_s": 83.62666666666667,
+    "model_mae_s": 69.65958553844716
+  },
+  "official_test": {
+    "n": 353,
+    "zero_mae_s": 103.33711048158641,
+    "cur_dev_mae_s": 93.35977337110482,
+    "model_mae_s": 67.5337806203253
+  },
+  "feature_count": 74,
+  "elapsed_seconds": 79.00718632000007,
+  "limitations": [
+    "Only one observed day; no cross-day generalization estimate.",
+    "Official test shares vehicles/day with train; synthetic relatives may occur if enabled.",
+    "CV metrics include early-stopping/model selection and are not an unbiased final test.",
+    "Group holdout score belongs to the development model, before final refitting.",
+    "No validate targets or schedule actuals are used."
+  ]
+}

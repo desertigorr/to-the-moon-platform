@@ -1,0 +1,13 @@
+.git
+.venv
+**/__pycache__
+**/node_modules
+**/.git
+Frontend-To-the-Moon
+dataset
+artifacts
+.env
+tests
+ml_assets/**/*.csv
+ml_assets/**/*.zip
+submission

@@ -1,0 +1,66 @@
+name: to-the-moon
+services:
+  emulator:
+    image: ndtp-telemetry-emulator:1.0
+    pull_policy: never
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${EMULATOR_API_PORT:-18080}:18080"
+  ml:
+    build:
+      context: .
+      dockerfile: ml_service/Dockerfile
+    restart: unless-stopped
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:8001/health')"]
+      interval: 10s
+      timeout: 5s
+      start_period: 60s
+      retries: 6
+  backend:
+    image: to-the-moon-backend:latest
+    build: .
+    restart: unless-stopped
+    environment:
+      NDTP_HOST: 0.0.0.0
+      NDTP_PORT: 9201
+      NDTP_OUTPUT_DIR: /app/artifacts/ndtp
+      DATA_MODE: ${DATA_MODE:-emulator_replay}
+      EMULATOR_URL: http://emulator:18080
+      EMULATOR_INTERVAL_MS: ${EMULATOR_INTERVAL_MS:-5000}
+      EMULATOR_TARGET_HOST: backend
+      SCENARIO_DATASET_DIR: ${SCENARIO_DATASET_DIR:-/app/dataset/validate}
+      SCENARIO_START: ${SCENARIO_START:-2026-01-06T12:30:00Z}
+      SCENARIO_DURATION_S: ${SCENARIO_DURATION_S:-1800}
+      SCENARIO_TICK_S: ${SCENARIO_TICK_S:-1}
+      SCHEDULE_PATH: ${SCHEDULE_PATH:-}
+      GEOMETRY_PATH: ${GEOMETRY_PATH-assets/geometry.json}
+      NDTP_MAPPING: ${NDTP_MAPPING:-examples/emulator-unit-map.json}
+      ML_URL: http://ml:8001
+      ML_INTERVAL_S: ${ML_INTERVAL_S:-5}
+      HISTORY_SIZE: ${HISTORY_SIZE:-10000}
+      HISTORY_SECONDS: ${HISTORY_SECONDS:-900}
+      STALE_AFTER_S: ${STALE_AFTER_S:-30}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:8080,http://127.0.0.1:8080,http://localhost:5174,http://127.0.0.1:5174,http://localhost:5173,http://127.0.0.1:5173}
+    volumes:
+      - ./dataset:/app/dataset:ro
+      - ./artifacts/runtime:/app/artifacts
+    ports:
+      - "127.0.0.1:${API_PORT:-8000}:8000"
+      - "${NDTP_BIND:-127.0.0.1}:${NDTP_PUBLIC_PORT:-9201}:9201"
+    depends_on:
+      ml:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+  frontend:
+    build: ./Frontend-To-the-Moon
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_BIND:-127.0.0.1}:${FRONTEND_PORT:-8080}:8080"
+    depends_on:
+      backend:
+        condition: service_healthy

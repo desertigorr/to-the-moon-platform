@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: backend.app</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="backend.html" class="white">backend</a>.app</strong></td>
+<td class="extra"><a href=".">index</a><br>backend.app</td></tr></table>
+    <p><span class="code">HTTP/WebSocket&nbsp;API&nbsp;around&nbsp;the&nbsp;existing&nbsp;NDTP&nbsp;receiver.</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="asyncio.html">asyncio</a><br>
+</td><td class="multicolumn"><a href="os.html">os</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="builtins.html#object">builtins.object</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="backend.app.html#Settings">Settings</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Settings">class <strong>Settings</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Settings">Settings</a>(ndtp_host:&nbsp;str&nbsp;=&nbsp;'0.0.0.0',&nbsp;ndtp_port:&nbsp;int&nbsp;=&nbsp;9201,&nbsp;mapping:&nbsp;pathlib.Path&nbsp;|&nbsp;None&nbsp;=&nbsp;PosixPath('examples/unit-map.json'),&nbsp;output_dir:&nbsp;pathlib.Path&nbsp;=&nbsp;PosixPath('artifacts/ndtp'),&nbsp;history_size:&nbsp;int&nbsp;=&nbsp;10000,&nbsp;history_seconds:&nbsp;int&nbsp;=&nbsp;900,&nbsp;stale_after_s:&nbsp;float&nbsp;=&nbsp;30,&nbsp;data_mode:&nbsp;str&nbsp;=&nbsp;'live',&nbsp;schedule_path:&nbsp;str&nbsp;=&nbsp;'',&nbsp;geometry_path:&nbsp;str&nbsp;=&nbsp;'assets/geometry.json',&nbsp;ml_url:&nbsp;str&nbsp;=&nbsp;'',&nbsp;ml_interval_s:&nbsp;float&nbsp;=&nbsp;5,&nbsp;ml_timeout_s:&nbsp;float&nbsp;=&nbsp;15,&nbsp;emulator_url:&nbsp;str&nbsp;=&nbsp;'',&nbsp;emulator_interval_ms:&nbsp;int&nbsp;=&nbsp;5000,&nbsp;emulator_target_host:&nbsp;str&nbsp;=&nbsp;'backend',&nbsp;scenario_dataset_dir:&nbsp;str&nbsp;=&nbsp;'dataset/validate',&nbsp;scenario_start:&nbsp;str&nbsp;=&nbsp;'2026-01-06T12:30:00Z',&nbsp;scenario_duration_s:&nbsp;int&nbsp;=&nbsp;1800,&nbsp;scenario_tick_s:&nbsp;float&nbsp;=&nbsp;1,&nbsp;cors_origins:&nbsp;list[str]&nbsp;=&nbsp;&amp;lt;factory&amp;gt;)&nbsp;-&amp;gt;&nbsp;None<br>
+&nbsp;<br>
+<a href="#Settings">Settings</a>(ndtp_host:&nbsp;str&nbsp;=&nbsp;'0.0.0.0',&nbsp;ndtp_port:&nbsp;int&nbsp;=&nbsp;9201,&nbsp;mapping:&nbsp;pathlib.Path&nbsp;|&nbsp;None&nbsp;=&nbsp;PosixPath('examples/unit-map.json'),&nbsp;output_dir:&nbsp;pathlib.Path&nbsp;=&nbsp;PosixPath('artifacts/ndtp'),&nbsp;history_size:&nbsp;int&nbsp;=&nbsp;10000,&nbsp;history_seconds:&nbsp;int&nbsp;=&nbsp;900,&nbsp;stale_after_s:&nbsp;float&nbsp;=&nbsp;30,&nbsp;data_mode:&nbsp;str&nbsp;=&nbsp;'live',&nbsp;schedule_path:&nbsp;str&nbsp;=&nbsp;'',&nbsp;geometry_path:&nbsp;str&nbsp;=&nbsp;'assets/geometry.json',&nbsp;ml_url:&nbsp;str&nbsp;=&nbsp;'',&nbsp;ml_interval_s:&nbsp;float&nbsp;=&nbsp;5,&nbsp;ml_timeout_s:&nbsp;float&nbsp;=&nbsp;15,&nbsp;emulator_url:&nbsp;str&nbsp;=&nbsp;'',&nbsp;emulator_interval_ms:&nbsp;int&nbsp;=&nbsp;5000,&nbsp;emulator_target_host:&nbsp;str&nbsp;=&nbsp;'backend',&nbsp;scenario_dataset_dir:&nbsp;str&nbsp;=&nbsp;'dataset/validate',&nbsp;scenario_start:&nbsp;str&nbsp;=&nbsp;'2026-01-06T12:30:00Z',&nbsp;scenario_duration_s:&nbsp;int&nbsp;=&nbsp;1800,&nbsp;scenario_tick_s:&nbsp;float&nbsp;=&nbsp;1,&nbsp;cors_origins:&nbsp;list[str]&nbsp;=&nbsp;&lt;factory&gt;)<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="Settings-__eq__"><strong>__eq__</strong></a>(self, other)</dt><dd><span class="code">Return&nbsp;self==value.</span></dd></dl>
+
+<dl><dt><a name="Settings-__init__"><strong>__init__</strong></a>(self, ndtp_host: str = '0.0.0.0', ndtp_port: int = 9201, mapping: pathlib.Path | None = PosixPath('examples/unit-map.json'), output_dir: pathlib.Path = PosixPath('artifacts/ndtp'), history_size: int = 10000, history_seconds: int = 900, stale_after_s: float = 30, data_mode: str = 'live', schedule_path: str = '', geometry_path: str = 'assets/geometry.json', ml_url: str = '', ml_interval_s: float = 5, ml_timeout_s: float = 15, emulator_url: str = '', emulator_interval_ms: int = 5000, emulator_target_host: str = 'backend', scenario_dataset_dir: str = 'dataset/validate', scenario_start: str = '2026-01-06T12:30:00Z', scenario_duration_s: int = 1800, scenario_tick_s: float = 1, cors_origins: list[str] = &lt;factory&gt;) -&gt; None</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<dl><dt><a name="Settings-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><span class="code">Return&nbsp;repr(self).</span></dd></dl>
+
+<hr>
+Class methods defined here:<br>
+<dl><dt><a name="Settings-from_env"><strong>from_env</strong></a>()</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__annotations__</strong> = {'cors_origins': list[str], 'data_mode': &lt;class 'str'&gt;, 'emulator_interval_ms': &lt;class 'int'&gt;, 'emulator_target_host': &lt;class 'str'&gt;, 'emulator_url': &lt;class 'str'&gt;, 'geometry_path': &lt;class 'str'&gt;, 'history_seconds': &lt;class 'int'&gt;, 'history_size': &lt;class 'int'&gt;, 'mapping': pathlib.Path | None, 'ml_interval_s': &lt;class 'float'&gt;, ...}</dl>
+
+<dl><dt><strong>__dataclass_fields__</strong> = {'cors_origins': Field(name='cors_origins',type=list[str],default...appingproxy({}),kw_only=False,_field_type=_FIELD), 'data_mode': Field(name='data_mode',type=&lt;class 'str'&gt;,defaul...appingproxy({}),kw_only=False,_field_type=_FIELD), 'emulator_interval_ms': Field(name='emulator_interval_ms',type=&lt;class 'i...appingproxy({}),kw_only=False,_field_type=_FIELD), 'emulator_target_host': Field(name='emulator_target_host',type=&lt;class 's...appingproxy({}),kw_only=False,_field_type=_FIELD), 'emulator_url': Field(name='emulator_url',type=&lt;class 'str'&gt;,def...appingproxy({}),kw_only=False,_field_type=_FIELD), 'geometry_path': Field(name='geometry_path',type=&lt;class 'str'&gt;,de...appingproxy({}),kw_only=False,_field_type=_FIELD), 'history_seconds': Field(name='history_seconds',type=&lt;class 'int'&gt;,...appingproxy({}),kw_only=False,_field_type=_FIELD), 'history_size': Field(name='history_size',type=&lt;class 'int'&gt;,def...appingproxy({}),kw_only=False,_field_type=_FIELD), 'mapping': Field(name='mapping',type=pathlib.Path | None,de...appingproxy({}),kw_only=False,_field_type=_FIELD), 'ml_interval_s': Field(name='ml_interval_s',type=&lt;class 'float'&gt;,...appingproxy({}),kw_only=False,_field_type=_FIELD), ...}</dl>
+
+<dl><dt><strong>__dataclass_params__</strong> = _DataclassParams(init=True,repr=True,eq=True,ord...rue,kw_only=False,slots=False,weakref_slot=False)</dl>
+
+<dl><dt><strong>__hash__</strong> = None</dl>
+
+<dl><dt><strong>__match_args__</strong> = ('ndtp_host', 'ndtp_port', 'mapping', 'output_dir', 'history_size', 'history_seconds', 'stale_after_s', 'data_mode', 'schedule_path', 'geometry_path', 'ml_url', 'ml_interval_s', 'ml_timeout_s', 'emulator_url', 'emulator_interval_ms', 'emulator_target_host', 'scenario_dataset_dir', 'scenario_start', 'scenario_duration_s', 'scenario_tick_s', ...)</dl>
+
+<dl><dt><strong>data_mode</strong> = 'live'</dl>
+
+<dl><dt><strong>emulator_interval_ms</strong> = 5000</dl>
+
+<dl><dt><strong>emulator_target_host</strong> = 'backend'</dl>
+
+<dl><dt><strong>emulator_url</strong> = ''</dl>
+
+<dl><dt><strong>geometry_path</strong> = 'assets/geometry.json'</dl>
+
+<dl><dt><strong>history_seconds</strong> = 900</dl>
+
+<dl><dt><strong>history_size</strong> = 10000</dl>
+
+<dl><dt><strong>mapping</strong> = PosixPath('examples/unit-map.json')</dl>
+
+<dl><dt><strong>ml_interval_s</strong> = 5</dl>
+
+<dl><dt><strong>ml_timeout_s</strong> = 15</dl>
+
+<dl><dt><strong>ml_url</strong> = ''</dl>
+
+<dl><dt><strong>ndtp_host</strong> = '0.0.0.0'</dl>
+
+<dl><dt><strong>ndtp_port</strong> = 9201</dl>
+
+<dl><dt><strong>output_dir</strong> = PosixPath('artifacts/ndtp')</dl>
+
+<dl><dt><strong>scenario_dataset_dir</strong> = 'dataset/validate'</dl>
+
+<dl><dt><strong>scenario_duration_s</strong> = 1800</dl>
+
+<dl><dt><strong>scenario_start</strong> = '2026-01-06T12:30:00Z'</dl>
+
+<dl><dt><strong>scenario_tick_s</strong> = 1</dl>
+
+<dl><dt><strong>schedule_path</strong> = ''</dl>
+
+<dl><dt><strong>stale_after_s</strong> = 30</dl>
+
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-create_app"><strong>create_app</strong></a>(settings: backend.app.Settings | None = None) -&gt; fastapi.applications.FastAPI</dt></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>app</strong> = &lt;fastapi.applications.FastAPI object&gt;</td></tr></table>
+</body></html>

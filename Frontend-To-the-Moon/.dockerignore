@@ -1,0 +1,12 @@
+node_modules
+dist
+.git
+.env*
+docs
+work
+data
+__pycache__
+*.csv
+*.parquet
+*.zip
+*.tar

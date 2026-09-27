@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: backend.scenario</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="backend.html" class="white">backend</a>.scenario</strong></td>
+<td class="extra"><a href=".">index</a><br>backend.scenario</td></tr></table>
+    <p><span class="code">Historical&nbsp;movement&nbsp;controlled&nbsp;through&nbsp;the&nbsp;unmodified&nbsp;organizer&nbsp;emulator&nbsp;REST&nbsp;API.<br>
+&nbsp;<br>
+CSV&nbsp;is&nbsp;input&nbsp;to&nbsp;the&nbsp;emulator&nbsp;controller,&nbsp;never&nbsp;a&nbsp;shortcut&nbsp;into&nbsp;FleetState&nbsp;or&nbsp;ML.<br>
+The&nbsp;emulator&nbsp;timestamps&nbsp;its&nbsp;output&nbsp;now;&nbsp;the&nbsp;known&nbsp;plan&nbsp;receives&nbsp;the&nbsp;same&nbsp;fixed<br>
+wall-clock&nbsp;shift.&nbsp;This&nbsp;is&nbsp;a&nbsp;causal&nbsp;scenario&nbsp;at&nbsp;1x,&nbsp;not&nbsp;an&nbsp;exact&nbsp;CSV&nbsp;replay.</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="asyncio.html">asyncio</a><br>
+<a href="csv.html">csv</a><br>
+</td><td class="multicolumn"><a href="httpx.html">httpx</a><br>
+<a href="logging.html">logging</a><br>
+</td><td class="multicolumn"><a href="math.html">math</a><br>
+<a href="time.html">time</a><br>
+</td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="builtins.html#object">builtins.object</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="backend.scenario.html#ScenarioController">ScenarioController</a>
+</dt><dt class="heading-text"><a href="backend.scenario.html#ScenarioCursor">ScenarioCursor</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="ScenarioController">class <strong>ScenarioController</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#ScenarioController">ScenarioController</a>(pipeline,&nbsp;settings)<br>
+&nbsp;<br>
+<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="ScenarioController-__init__"><strong>__init__</strong></a>(self, pipeline, settings)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<dl><dt><a name="ScenarioController-accept"><strong>accept</strong></a>(self, event)</dt><dd><span class="code">Only&nbsp;actual&nbsp;decoded&nbsp;NDTP&nbsp;matching&nbsp;a&nbsp;pending&nbsp;scenario&nbsp;command&nbsp;can&nbsp;enter&nbsp;state.</span></dd></dl>
+
+<dl><dt>async <a name="ScenarioController-post"><strong>post</strong></a>(self, client, batch, now)</dt></dl>
+
+<dl><dt>async <a name="ScenarioController-run"><strong>run</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="ScenarioController-snapshot"><strong>snapshot</strong></a>(self)</dt></dl>
+
+<dl><dt>async <a name="ScenarioController-step"><strong>step</strong></a>(self, client, now=None)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="ScenarioCursor">class <strong>ScenarioCursor</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#ScenarioCursor">ScenarioCursor</a>(rows,&nbsp;max_age_s=30)<br>
+&nbsp;<br>
+<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="ScenarioCursor-__init__"><strong>__init__</strong></a>(self, rows, max_age_s=30)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<dl><dt><a name="ScenarioCursor-collect"><strong>collect</strong></a>(self, source_now)</dt><dd><span class="code">New,&nbsp;already&nbsp;available&nbsp;measurements&nbsp;only;&nbsp;do&nbsp;not&nbsp;refresh&nbsp;a&nbsp;silent&nbsp;bus.</span></dd></dl>
+
+<dl><dt><a name="ScenarioCursor-reset"><strong>reset</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-load_scenario"><strong>load_scenario</strong></a>(directory, start, duration)</dt><dd><span class="code">Read&nbsp;telemetry&nbsp;and&nbsp;plan&nbsp;only;&nbsp;labels&nbsp;and&nbsp;actual&nbsp;arrival&nbsp;times&nbsp;are&nbsp;excluded.</span></dd></dl>
+ <dl><dt><a name="-nav_fields"><strong>nav_fields</strong></a>(row)</dt></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>LOG</strong> = &lt;Logger scenario (WARNING)&gt;</td></tr></table>
+</body></html>

@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-09-27T17:47:59.399870+00:00",
+  "split": "test",
+  "rows": 353,
+  "provided_cur_dev_with_receive_cutoff": {
+    "mae_s": 67.6320830679811,
+    "tp": 83,
+    "fp": 107,
+    "fn": 3,
+    "precision": 0.4368421052631579,
+    "recall": 0.9651162790697675
+  },
+  "gps_cur_dev_with_receive_cutoff": {
+    "mae_s": 144.55803947215566,
+    "tp": 67,
+    "fp": 64,
+    "fn": 19,
+    "precision": 0.5114503816793893,
+    "recall": 0.7790697674418605
+  },
+  "gps_cur_dev_known": 120,
+  "cur_dev_difference_mae_s": 49.333333333333336,
+  "limitations": "Offline replay of test with causal event/receive cutoff, original timestamps and all received packets. This is not shifted official-emulator latency or leaderboard evaluation. Arrival safeguards were investigated with train diagnostics after an initial test exposed the integration gap; this is a diagnostic comparison, not a new independent holdout."
+}

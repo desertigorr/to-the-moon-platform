@@ -1,0 +1,66 @@
+:root {
+  font-family: Inter, 'Segoe UI', Arial, sans-serif;
+  color: var(--text);
+  background: var(--background);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --background: #1a1230;
+  --accent: #3f6dd1;
+  --text: #fff;
+  --surface: color-mix(in srgb, var(--background) 96%, var(--text));
+  --surface-raised: color-mix(in srgb, var(--background) 92%, var(--text));
+  --surface-hover: color-mix(in srgb, var(--accent) 14%, var(--surface));
+  --accent-soft: color-mix(in srgb, var(--accent) 18%, var(--background));
+  --accent-ink: color-mix(in srgb, var(--accent) 50%, var(--text));
+  --border: color-mix(in srgb, var(--text) 12%, var(--background));
+  --muted: color-mix(in srgb, var(--text) 66%, var(--background));
+  --risk: var(--accent-ink);
+  --attention: color-mix(in srgb, var(--text) 86%, var(--accent));
+  --normal: color-mix(in srgb, var(--text) 60%, var(--accent));
+  --pending: var(--muted);
+  --offline: color-mix(in srgb, var(--text) 52%, var(--background));
+  --route-line: color-mix(in srgb, var(--accent) 38%, var(--background));
+  --route-stop: color-mix(in srgb, var(--accent) 60%, var(--text));
+  --grid-line: color-mix(in srgb, var(--text) 6%, var(--background));
+  color-scheme: dark;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+}
+button,
+input,
+select {
+  font: inherit;
+}
+input,
+select {
+  color: var(--text);
+  background: var(--surface);
+}
+input::placeholder {
+  color: var(--muted);
+  opacity: 0.8;
+}
+::selection {
+  color: var(--text);
+  background: var(--accent);
+}
+button {
+  cursor: pointer;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+button {
+  -webkit-tap-highlight-color: transparent;
+}

@@ -1,0 +1,49 @@
+{
+  "checked_at": "2026-09-27T17:51:57.991331+00:00",
+  "duration_s": 60,
+  "vehicles_observed": 18,
+  "scheduled_vehicles": 10,
+  "prediction_statuses": {
+    "no_schedule": 9,
+    "ready": 8,
+    "no_target": 1
+  },
+  "predictions_with_factors": 8,
+  "same_session": true,
+  "accepted_delta": 79,
+  "missed_delta": 0,
+  "rejected_delta": 0,
+  "ml_processing_ms": {
+    "n": 13,
+    "p50": 31.00953600005596,
+    "p95": 49.9679210006434,
+    "max": 49.9679210006434
+  },
+  "batch_sizes": [
+    8
+  ],
+  "health_http_ms": {
+    "n": 60,
+    "p50": 23.73764998628758,
+    "p95": 46.49600002449006,
+    "max": 54.83699997421354
+  },
+  "geometry_segments": {
+    "historical_gps": 268,
+    "schedule_chord": 126
+  },
+  "risk_segments": {
+    "unknown": 386,
+    "attention": 7,
+    "normal": 1
+  },
+  "matching": {
+    "not_calculated": 9,
+    "unmatched": 1,
+    "matched": 7,
+    "ambiguous": 1
+  },
+  "ml_status": "ready",
+  "emulator_status": "ready",
+  "limits": "Small local scenario. ML time is not complete NDTP-to-screen latency. No leaderboard score is measured."
+}

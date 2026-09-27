@@ -1,0 +1,7 @@
+{
+  "frontend_http": 200,
+  "nginx_ws_snapshot_vehicles": 16,
+  "ws_next_type": "snapshot",
+  "ml_status": "ready",
+  "source": "emulator_replay"
+}

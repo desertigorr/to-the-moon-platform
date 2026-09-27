@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: ml_service.app</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="ml_service.html" class="white">ml_service</a>.app</strong></td>
+<td class="extra"><a href=".">index</a><br>ml_service.app</td></tr></table>
+    <p><span class="code">Models&nbsp;load&nbsp;once;&nbsp;one&nbsp;bounded,&nbsp;non-overlapping&nbsp;inference&nbsp;batch&nbsp;per&nbsp;process.</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="asyncio.html">asyncio</a><br>
+<a href="json.html">json</a><br>
+</td><td class="multicolumn"><a href="os.html">os</a><br>
+<a href="pandas.html">pandas</a><br>
+</td><td class="multicolumn"><a href="sys.html">sys</a><br>
+<a href="time.html">time</a><br>
+</td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-create_app"><strong>create_app</strong></a>()</dt></dl>
+ <dl><dt><a name="-infer"><strong>infer</strong></a>(predictor, request: shared.contracts.PredictRequest) -&gt; shared.contracts.PredictResponse</dt></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>PLAN_COLS</strong> = ['tt_action_item_id', 'tr_id', 'time_begin', 'geom']<br>
+<strong>REGRESSION</strong> = PosixPath('/app/ml_assets/catboost/ml_module')<br>
+<strong>RISK</strong> = PosixPath('/app/ml_assets/catboost_classificator/risk_module')<br>
+<strong>ROOT</strong> = PosixPath('/app')<br>
+<strong>TRAFFIC_COLS</strong> = ['tr_id', 'event_time', 'receive_time', 'location_valid', 'lat', 'lon', 'speed', 'heading']<br>
+<strong>app</strong> = &lt;fastapi.applications.FastAPI object&gt;</td></tr></table>
+</body></html>

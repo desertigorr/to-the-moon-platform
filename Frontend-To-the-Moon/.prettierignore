@@ -1,0 +1,6 @@
+node_modules
+dist
+pnpm-lock.yaml
+data/
+docs/backend-v0.1/
+docs/backend-v0.2/
