@@ -11,27 +11,10 @@ export function MoonMark() {
         d="M32 36A17 17 0 0 1 13 9a17 17 0 1 0 19 27Z"
         fill="currentColor"
       />
-      <g
-        fill="currentColor"
-        stroke="var(--accent)"
-        strokeWidth="0.6"
-        strokeLinejoin="round"
-      >
-        <path d="m30 25-3-7 1-1-2-3 2-1-1-3 3-7 3 7-1 3 2 1-2 3 1 1Z" />
-        <path d="m29 25-7-4 1-2-3-1 1-2-3-6 6 3v2l3 1-1 2 2 1Z" />
-        <path d="m31 25 7-4-1-2 3-1-1-2 3-6-6 3v2l-3 1 1 2-2 1Z" />
-        <path d="m29 25-8 1-1-2-3 1-6-6 8 1 1 2 3-1Z" />
-        <path d="m31 25 8 1 1-2 3 1 4-6-6 1-1 2-3-1Z" />
-        <path d="m29 25-3 5-7 2 3-5 3-1Z" />
-        <path d="m31 25 3 5 7 2-3-5-3-1Z" />
+      <g transform="translate(16 5) scale(1.25)">
+        <rect x="3" y="1" width="18" height="23" rx="4" fill="var(--accent)" />
+        <BusGlyph />
       </g>
-      <path
-        d="M30 24v10"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
     </svg>
   )
 }
